@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Minecraft-inspired earthy palette */
+    --background: 0.22 0.02 120;
+    --foreground: 0.95 0.01 90;
+    --card: 0.28 0.02 100;
+    --card-foreground: 0.95 0.01 90;
+    --popover: 0.28 0.02 100;
+    --popover-foreground: 0.95 0.01 90;
+    --primary: 0.55 0.18 145;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.38 0.04 80;
+    --secondary-foreground: 0.95 0.01 90;
+    --muted: 0.32 0.03 100;
+    --muted-foreground: 0.65 0.02 90;
+    --accent: 0.48 0.14 145;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.38 0.04 100;
+    --input: 0.38 0.04 100;
+    --ring: 0.55 0.18 145;
+    --chart-1: 0.55 0.18 145;
+    --chart-2: 0.48 0.14 200;
+    --chart-3: 0.62 0.16 60;
+    --chart-4: 0.45 0.12 30;
+    --chart-5: 0.58 0.20 170;
+    --sidebar: 0.22 0.02 120;
+    --sidebar-foreground: 0.95 0.01 90;
+    --sidebar-primary: 0.55 0.18 145;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.38 0.04 80;
+    --sidebar-accent-foreground: 0.95 0.01 90;
+    --sidebar-border: 0.38 0.04 100;
+    --sidebar-ring: 0.55 0.18 145;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Press Start 2P', monospace;
+  }
+}
+
+/* ===== GAME ROOT ===== */
+.game-root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* ===== TITLE SCREEN ===== */
+.title-screen {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+.title-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.title-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.title-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.title-bird-container {
+  animation: float 2s ease-in-out infinite;
+}
+
+.title-bird-sprite {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.title-heading {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  line-height: 1.3;
+  text-shadow:
+    4px 4px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.title-blue {
+  color: #60a5fa;
+}
+
+.title-white {
+  color: #f0f0f0;
+  margin: 0 0.3em;
+}
+
+.title-green {
+  color: #4ade80;
+}
+
+.title-subtitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #d1d5db;
+  text-shadow: 2px 2px 0 #000;
+  margin: 0;
+}
+
+.title-blocks {
+  display: flex;
+  gap: 4px;
+  margin: 0.5rem 0;
+}
+
+.title-block {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  border: 2px solid rgba(0,0,0,0.5);
+  box-shadow: inset -3px -3px 0 rgba(0,0,0,0.3), inset 3px 3px 0 rgba(255,255,255,0.15);
+  animation: blockBounce 1s ease-in-out infinite;
+}
+
+@keyframes blockBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.play-button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  padding: 1rem 2.5rem;
+  background: #4ade80;
+  color: #1a1a1a;
+  border: none;
+  border-bottom: 6px solid #16a34a;
+  border-right: 4px solid #16a34a;
+  cursor: pointer;
+  text-shadow: none;
+  transition: transform 0.1s, border-bottom-width 0.1s;
+  image-rendering: pixelated;
+  letter-spacing: 0.05em;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.play-button:hover {
+  background: #86efac;
+  transform: translateY(-2px);
+}
+
+.play-button:active {
+  transform: translateY(4px);
+  border-bottom-width: 2px;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.title-instructions {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: #9ca3af;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.title-sep {
+  color: #4ade80;
+}
+
+.title-footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.footer-heart {
+  color: #60a5fa;
+}
+
+.footer-link {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* ===== HUD ===== */
+.hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.hud-panel {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.65);
+  border: 2px solid rgba(74, 222, 128, 0.5);
+  padding: 0.6rem 0.8rem;
+  font-family: 'Press Start 2P', monospace;
+  color: #f0f0f0;
+  image-rendering: pixelated;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+}
+
+.hud-controls {
+  bottom: 1.5rem;
+  left: 1.5rem;
+  min-width: 200px;
+}
+
+.hud-coords {
+  top: 1.5rem;
+  right: 1.5rem;
+  min-width: 160px;
+}
+
+.hud-title {
+  font-size: 0.5rem;
+  color: #4ade80;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(74, 222, 128, 0.3);
+  padding-bottom: 0.3rem;
+}
+
+.hud-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+}
+
+.hud-key {
+  font-size: 0.4rem;
+  background: rgba(74, 222, 128, 0.2);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  padding: 0.2rem 0.4rem;
+  color: #4ade80;
+  white-space: nowrap;
+}
+
+.hud-label {
+  font-size: 0.4rem;
+  color: #d1d5db;
+}
+
+.hud-coord-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+}
+
+.hud-axis {
+  font-size: 0.45rem;
+  font-weight: bold;
+  width: 1rem;
+}
+
+.x-axis { color: #f87171; }
+.y-axis { color: #4ade80; }
+.z-axis { color: #60a5fa; }
+
+.hud-value {
+  font-size: 0.4rem;
+  color: #f0f0f0;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud-game-title {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  color: #4ade80;
+  text-shadow: 2px 2px 0 #000;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}

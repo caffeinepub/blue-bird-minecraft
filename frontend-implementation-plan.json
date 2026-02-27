@@ -1,0 +1,167 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Blue Bird in Minecraft-Style 3D World Game",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a 3D Minecraft-style world with procedurally generated voxel terrain and sky lighting",
+      "acceptanceCriteria": [
+        "A 3D voxel world is rendered using React Three Fiber and Three.js",
+        "Terrain includes grass-topped dirt blocks, stone underneath, and tree structures with wood and leaf blocks",
+        "Sky, sun, and ambient directional lighting are present",
+        "The world has a flat or slightly varied landscape resembling a normal Minecraft overworld"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace existing content with a 3D game canvas wrapper using React Three Fiber Canvas component. Set up the main game scene container and configure camera defaults for third-person view."
+        },
+        {
+          "path": "frontend/src/components/World.tsx",
+          "operation": "create",
+          "description": "Create a World component that procedurally generates voxel terrain blocks (grass on top of dirt with stone underneath) in a grid layout. Include tree structures with wood and leaf blocks. Render all blocks as BoxGeometry meshes with appropriate materials for grass, dirt, stone, wood, and leaves."
+        },
+        {
+          "path": "frontend/src/components/Sky.tsx",
+          "operation": "create",
+          "description": "Create a Sky component that renders a sky backdrop with gradient color, a directional sun light source, and ambient lighting to simulate a Minecraft overworld environment."
+        },
+        {
+          "path": "frontend/src/utils/worldGenerator.ts",
+          "operation": "create",
+          "description": "Create utility functions for procedural terrain generation: functions to determine block types at given coordinates, generate flat or slightly varied terrain height, and place tree structures at random intervals."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create a playable blue bird character with blocky Minecraft-style 3D model and third-person camera",
+      "acceptanceCriteria": [
+        "A small blue bird character is visible on screen as the player avatar",
+        "The bird model uses blocky/voxel aesthetics consistent with Minecraft art style",
+        "A third-person camera follows the bird as it moves through the world"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Bird.tsx",
+          "operation": "create",
+          "description": "Create a Bird component representing the player avatar. Build a small blocky 3D bird model using BoxGeometry primitives (cubic body, head, beak, wings, tail) with blue materials for feathers. Position the bird above the terrain at spawn. Reference the generated image at frontend/public/assets/generated/blue-bird-sprite.dim_128x128.png for design inspiration (note: the image is a 2D sprite; use it as a color and shape reference for the 3D blocky model)."
+        },
+        {
+          "path": "frontend/src/components/Camera.tsx",
+          "operation": "create",
+          "description": "Create a Camera component that follows the bird in third-person perspective. Use React Three Fiber's useFrame to smoothly interpolate camera position behind and above the bird as it moves."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the Bird, Camera, World, and Sky components inside the Canvas. Ensure the Camera component tracks the Bird's position."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement bird movement mechanics with WASD/arrow keys, Space to flap/fly, gravity, landing, and wing animation",
+      "acceptanceCriteria": [
+        "WASD or arrow keys move the bird horizontally",
+        "Pressing Space causes the bird to gain vertical lift (flap/fly)",
+        "Gravity pulls the bird downward when not flapping",
+        "The bird lands and rests on top of block surfaces",
+        "Wings visually animate during flight"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/usePlayerControls.ts",
+          "operation": "create",
+          "description": "Create a custom hook that listens for keyboard input (WASD, arrow keys, Space bar) and returns the current movement direction and flap state."
+        },
+        {
+          "path": "frontend/src/components/Bird.tsx",
+          "operation": "modify",
+          "description": "Integrate the usePlayerControls hook to move the bird horizontally based on input. Implement vertical velocity with gravity pulling down and Space bar adding upward lift (flapping). Update bird position using useFrame. Add simple wing rotation animation that responds to flying state (wings flap up and down when Space is pressed)."
+        },
+        {
+          "path": "frontend/src/utils/physics.ts",
+          "operation": "create",
+          "description": "Create utility functions for gravity simulation and vertical velocity integration. Include a function to check if the bird is on the ground (standing on a block surface) and stop downward velocity when landed."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement block collision detection so the bird cannot pass through solid blocks and lands on surfaces",
+      "acceptanceCriteria": [
+        "The bird collides with block surfaces and does not clip through them",
+        "The bird lands on top of grass and other solid block surfaces",
+        "The bird cannot fly through tree trunks or leaf blocks"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/collision.ts",
+          "operation": "create",
+          "description": "Create collision detection utilities: functions to check if a given 3D position intersects with any voxel block, check ground collision (landing on top of blocks), and prevent horizontal penetration into blocks."
+        },
+        {
+          "path": "frontend/src/components/Bird.tsx",
+          "operation": "modify",
+          "description": "Integrate collision detection before updating bird position. Check for ground collision to allow landing on block tops and stop vertical descent. Check horizontal and vertical collision to prevent the bird from passing through solid blocks."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add on-screen HUD showing player controls and coordinate display",
+      "acceptanceCriteria": [
+        "A HUD overlay shows key bindings for movement and flying",
+        "Player position or a simple orientation indicator is displayed on screen",
+        "HUD elements do not obstruct the main 3D viewport"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HUD.tsx",
+          "operation": "create",
+          "description": "Create a HUD component that overlays the 3D canvas. Display control instructions (WASD to move, Space to flap) and the bird's current coordinates. Position the HUD in a corner to avoid obstructing the main viewport. Use absolute positioning and a semi-transparent background."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Render the HUD component above the Canvas so it overlays the 3D scene. Pass bird position state to HUD for coordinate display."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Apply Minecraft-inspired pixel-art visual theme with blocky fonts, earthy colors, texture panels, and a title screen",
+      "acceptanceCriteria": [
+        "A start/title screen is displayed before gameplay begins, styled after Minecraft's title screen",
+        "UI uses a blocky pixel-art font",
+        "Color palette uses greens, browns, and earthy tones consistent with Minecraft",
+        "A 'Play' or 'Start Game' button is present on the title screen"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TitleScreen.tsx",
+          "operation": "create",
+          "description": "Create a TitleScreen component displaying the game title 'Blue Bird Craft' in large blocky pixel-art font. Use the generated background image at frontend/public/assets/generated/title-bg.dim_1280x720.png as the fullscreen backdrop. Include a 'Play Game' button styled with Minecraft-inspired earthy tones (greens and browns). Use the generated grass block tile at frontend/public/assets/generated/grass-block-tile.dim_64x64.png as a repeating texture for the button or UI panel backgrounds."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add a game state (e.g., 'title' or 'playing') to control whether the TitleScreen or the 3D game Canvas is displayed. Show the TitleScreen initially; when the user clicks 'Play Game', transition to the game view."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Import and apply a blocky pixel-art font (e.g., a web font like 'Press Start 2P' or similar). Set base font-family and define CSS variables for Minecraft-inspired earthy color palette (grass green, dirt brown, stone gray). Apply these colors and fonts to body and UI elements."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom colors matching the Minecraft-inspired palette (greens, browns, earthy tones) and set the default font family to the blocky pixel-art font."
+        }
+      ]
+    }
+  ]
+}

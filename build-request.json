@@ -1,0 +1,140 @@
+{
+  "kind": "build_request",
+  "title": "Blue Bird in Minecraft-Style 3D World Game",
+  "projectName": "Blue Bird Craft",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Build a 3D Minecraft-style world using React Three Fiber with procedurally generated terrain made of voxel blocks (grass, dirt, stone, wood, leaves). Include a sky with sun, clouds, and ambient lighting to simulate a normal Minecraft overworld environment.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make an game that you are a little blue bird in Minecraft (normal Minecraft)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A 3D voxel world is rendered using React Three Fiber and Three.js",
+        "Terrain includes grass-topped dirt blocks, stone underneath, and tree structures with wood and leaf blocks",
+        "Sky, sun, and ambient directional lighting are present",
+        "The world has a flat or slightly varied landscape resembling a normal Minecraft overworld"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Create a playable blue bird character as the player avatar. The bird should be rendered as a small blocky/pixelated 3D model in Minecraft style (cubic body, blue feathers, small beak, wings). The camera should follow the bird in a third-person perspective.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "you are a little blue bird in Minecraft"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A small blue bird character is visible on screen as the player avatar",
+        "The bird model uses blocky/voxel aesthetics consistent with Minecraft art style",
+        "A third-person camera follows the bird as it moves through the world"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement bird movement mechanics: WASD or arrow keys for horizontal movement, Space to flap and fly upward, gravity pulls the bird down when not flapping, and the bird can land on top of blocks. Add smooth wing animation when flying.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "little blue bird in Minecraft"
+        ]
+      },
+      "acceptanceCriteria": [
+        "WASD or arrow keys move the bird horizontally",
+        "Pressing Space causes the bird to gain vertical lift (flap/fly)",
+        "Gravity pulls the bird downward when not flapping",
+        "The bird lands and rests on top of block surfaces",
+        "Wings visually animate during flight"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement basic block collision detection so the bird cannot pass through solid blocks and correctly lands on top of surfaces.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Minecraft (normal Minecraft)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The bird collides with block surfaces and does not clip through them",
+        "The bird lands on top of grass and other solid block surfaces",
+        "The bird cannot fly through tree trunks or leaf blocks"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add on-screen HUD showing player controls (WASD to move, Space to flap) and a small mini-map or coordinate display to help the player navigate the world.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Make an game"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A HUD overlay shows key bindings for movement and flying",
+        "Player position or a simple orientation indicator is displayed on screen",
+        "HUD elements do not obstruct the main 3D viewport"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Apply a Minecraft-inspired pixel-art visual theme throughout the UI: blocky fonts, earthy green and brown color palette for menus, dirt/grass block textures for UI panels, and a loading/start screen with the game title 'Blue Bird Craft' styled like a Minecraft title screen.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Minecraft (normal Minecraft)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A start/title screen is displayed before gameplay begins, styled after Minecraft's title screen",
+        "UI uses a blocky pixel-art font",
+        "Color palette uses greens, browns, and earthy tones consistent with Minecraft",
+        "A 'Play' or 'Start Game' button is present on the title screen"
+      ]
+    }
+  ],
+  "constraints": [
+    "All 3D rendering must use React Three Fiber and Three.js only — no external game engines",
+    "No backend persistence is required; the game is entirely frontend",
+    "Do not edit any files under frontend/src/hooks/ or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "Multiplayer or networked gameplay",
+    "Actual Minecraft assets or copyrighted textures",
+    "Inventory, crafting, or survival mechanics",
+    "Enemy mobs or combat",
+    "World saving or loading from backend"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Pixelated blue bird sprite facing forward with blocky Minecraft-style design, small beak, stubby wings, on transparent background (blue-bird-sprite.dim_128x128.png)",
+      "Minecraft-style grass block texture tile for UI panels and backgrounds, earthy green top and brown dirt sides (grass-block-tile.dim_64x64.png)",
+      "Minecraft-style title screen background showing a grassy voxel landscape at sunset with trees (title-bg.dim_1280x720.png)"
+    ],
+    "edits": []
+  }
+}

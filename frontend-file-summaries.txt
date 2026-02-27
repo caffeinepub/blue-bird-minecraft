@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main app component managing game state (title/playing), renders TitleScreen or the 3D Canvas with World, Bird, GameCamera, SkyScene, and HUD overlay.",
+  "frontend/src/utils/worldGenerator.ts": "Procedural voxel world generator using pseudo-noise for terrain height variation, tree placement, and block type assignment; exports block data and a fast Set-based collision lookup.",
+  "frontend/src/utils/collision.ts": "Collision detection utilities for checking if the bird is on the ground, computing the landing Y position, and detecting block intersections.",
+  "frontend/src/hooks/usePlayerControls.ts": "Custom hook that listens to keyboard events (WASD, arrow keys, Space) and returns a ref with the current control state for zero-lag input handling.",
+  "frontend/src/components/World.tsx": "Renders the entire voxel world using Three.js InstancedMesh for each block type (grass, dirt, stone, wood, leaves) for high-performance rendering.",
+  "frontend/src/components/Bird.tsx": "Playable blue bird character built from BoxGeometry primitives with physics (gravity, flapping), WASD movement, collision detection, wing animation, and facing direction.",
+  "frontend/src/components/GameCamera.tsx": "Third-person follow camera that smoothly lerps behind and above the bird using useFrame and useThree.",
+  "frontend/src/components/SkyScene.tsx": "Scene environment with sky-blue background, fog, ambient/directional/hemisphere lighting, and blocky cloud decorations.",
+  "frontend/src/components/HUD.tsx": "Overlay HUD showing WASD/Space controls and live XYZ coordinates updated via requestAnimationFrame.",
+  "frontend/src/components/TitleScreen.tsx": "Minecraft-inspired title screen with animated bird sprite, blocky \"BlueBirdCraft\" heading, grass block decorations, Play button, and footer attribution.",
+  "frontend/src/index.css": "Global styles with Press Start 2P pixel font, Minecraft-inspired OKLCH color tokens, and all game-specific CSS for title screen, HUD, and layout.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with pixel font family, Minecraft color palette tokens, pixel shadow utilities, and float/bounce animations.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file since this game requires no backend queries.",
+  "frontend/index.html": "HTML entry point with Press Start 2P font preloaded and updated title to BlueBirdCraft."
+}

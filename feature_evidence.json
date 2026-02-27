@@ -1,0 +1,122 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-3d-minecraft-style-world-using-react-three-fiber-with-procedurally-generated-terrain-made-of-voxel-blocks-grass-dirt-stone-wood-leaves-include-a-sky-with-sun-clouds-and-ambient-lighting-to-simulate-a-normal-minecraft-overworld-environment",
+      "featureTitle": "Build a 3D Minecraft-style world using React Three Fiber with procedurally generated terrain made of voxel blocks (grass, dirt, stone, wood, leaves). Include a sky with sun, clouds, and ambient lighting to simulate a normal Minecraft overworld environment.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/World.tsx",
+        "frontend/src/utils/worldGenerator.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-a-playable-blue-bird-character-as-the-player-avatar-the-bird-should-be-rendered-as-a-small-blocky-pixelated-3d-model-in-minecraft-style-cubic-body-blue-feathers-small-beak-wings-the-camera-should-follow-the-bird-in-a-third-person-perspective",
+      "featureTitle": "Create a playable blue bird character as the player avatar. The bird should be rendered as a small blocky/pixelated 3D model in Minecraft style (cubic body, blue feathers, small beak, wings). The camera should follow the bird in a third-person perspective.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Bird.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-bird-movement-mechanics-wasd-or-arrow-keys-for-horizontal-movement-space-to-flap-and-fly-upward-gravity-pulls-the-bird-down-when-not-flapping-and-the-bird-can-land-on-top-of-blocks-add-smooth-wing-animation-when-flying",
+      "featureTitle": "Implement bird movement mechanics: WASD or arrow keys for horizontal movement, Space to flap and fly upward, gravity pulls the bird down when not flapping, and the bird can land on top of blocks. Add smooth wing animation when flying.",
+      "files": [
+        "frontend/src/components/Bird.tsx",
+        "frontend/src/hooks/usePlayerControls.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-basic-block-collision-detection-so-the-bird-cannot-pass-through-solid-blocks-and-correctly-lands-on-top-of-surfaces",
+      "featureTitle": "Implement basic block collision detection so the bird cannot pass through solid blocks and correctly lands on top of surfaces.",
+      "files": [
+        "frontend/src/components/Bird.tsx",
+        "frontend/src/utils/collision.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-on-screen-hud-showing-player-controls-wasd-to-move-space-to-flap-and-a-small-mini-map-or-coordinate-display-to-help-the-player-navigate-the-world",
+      "featureTitle": "Add on-screen HUD showing player controls (WASD to move, Space to flap) and a small mini-map or coordinate display to help the player navigate the world.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/HUD.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-minecraft-inspired-pixel-art-visual-theme-throughout-the-ui-blocky-fonts-earthy-green-and-brown-color-palette-for-menus-dirt-grass-block-textures-for-ui-panels-and-a-loading-start-screen-with-the-game-title-blue-bird-craft-styled-like-a-minecraft-title-screen",
+      "featureTitle": "Apply a Minecraft-inspired pixel-art visual theme throughout the UI: blocky fonts, earthy green and brown color palette for menus, dirt/grass block textures for UI panels, and a loading/start screen with the game title 'Blue Bird Craft' styled like a Minecraft title screen.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/TitleScreen.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
